@@ -15,8 +15,9 @@ pipeline {
                 git branch: 'jenkins-workshop', url: 'https://github.com/yanivomc/devopshift-welcome.git'
             }
         }
-
-        stage('Setup Python Environment') {
+           stage('Parallel Execution - Ziv the King') {
+            parallel {
+                stage('Setup Python Environment') {
             steps {
                 dir("${PROJECT_HOME}") {
                     script {
@@ -50,6 +51,9 @@ pipeline {
                 }
             }
         }
+            }
+        }
+        
 
         stage('Run Flask Application') {
             steps {
